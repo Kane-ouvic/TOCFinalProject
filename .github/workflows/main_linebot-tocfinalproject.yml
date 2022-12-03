@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'LineBot-TOCFinalProject'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6A1B21769D124A52BCB90B91F4B492EC }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2F515B5FFAB94A84BC3B911BFD6C7781 }}
