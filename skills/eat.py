@@ -16,9 +16,9 @@ def get(message_request: MessageRequest):
     print(result)
     
     message = TemplateSendMessage(
-        alt_text='今天吃什麼'
+        alt_text='今天吃什麼',
         template=ButtonsTemplate(
-            title='今天吃什麼'?,
+            title='今天吃什麼?',
             text=f'就決定吃{result}吧!',
             actions=[
                 MessageAction(
