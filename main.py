@@ -10,6 +10,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import *
 from skills import *
 from skills import skills
+from dal.azure_table_repository import AzureTableRepository
 
 app = FastAPI()
 
@@ -45,6 +46,11 @@ def handle_message(event):
     msg_request.message = event.message.text
     msg_request.user_id = event.source.user_id
 
+    # 處理當前使用者對話場景
+    current_intent = log_user(msg_request.user_id)
+    if current_intent != '':
+        msg_request.intent = f'{current_intent} {msg_request.message}'
+
     func = get_message(msg_request)
     line_bot_api.reply_message(event.reply_token, func)
 
@@ -69,9 +75,63 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, TextSendMessage(f'Hi, 蔥'))
 
 
+# @handler.add(event=MessageEvent, message=LocationMessage)
+# def handle_message(event):
+#     print('location', event)
+#     print('-----')
+#     print(event.message.latitude)
+#     print(event.message.longitude)
+
+
 @handler.add(event=MessageEvent, message=LocationMessage)
 def handle_message(event):
-    print('location', event)
-    print('-----')
-    print(event.message.latitude)
-    print(event.message.longitude)
+    msg_request = MessageRequest()
+    msg_request.intent = f"/foodmap {event.message.latitude} {event.message.longitude}"
+    msg_request.message = f"/foodmap {event.message.latitude} {event.message.longitude}"
+    msg_request.user_id = event.source.user_id
+    func = get_message(msg_request)
+    line_bot_api.reply_message(event.reply_token, func)
+
+
+@handler.add(event=PostbackEvent)
+def handle_message(event):
+    print('postback', event.postback)
+    msg_request = MessageRequest()
+    msg_request.intent = event.postback.data
+    msg_request.message = event.postback.data
+    msg_request.user_id = event.source.user_id
+
+    if event.postback.params != None:
+        msg_request.intent = msg_request.intent + \
+            ' ' + event.postback.params['date']
+        msg_request.message = msg_request.message + \
+            ' ' + event.postback.params['date']
+
+    func = get_message(msg_request)
+    line_bot_api.reply_message(event.reply_token, func)
+
+
+def log_user(user_id):
+    print(user_id)
+    # 使用者資訊儲存到Azure Table
+    profile = line_bot_api.get_profile(user_id)
+    repo = AzureTableRepository('users')
+    entities = repo.get(f"RowKey eq '{user_id}'")
+    item = list(entities)
+    if len(item) == 0:
+        create = {
+            u'PartitionKey': 'users',
+            u'RowKey': user_id,
+            u'DisplayName': profile.display_name,
+            u'CurrentIntent': ''
+        }
+        repo.create(create)
+        return ''
+    else:
+        update = {
+            u'PartitionKey': 'users',
+            u'RowKey': user_id,
+            u'DisplayName': profile.display_name
+        }
+        repo.update(update)
+        return item[0]['CurrentIntent']

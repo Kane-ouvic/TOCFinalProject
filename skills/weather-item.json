@@ -1,0 +1,60 @@
+{
+  "type": "bubble",
+  "size": "kilo",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "臺北市 - 稍有寒意至舒適",
+        "weight": "bold",
+        "size": "sm",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "10/05 18:00 ~ 10/06 06:00",
+        "weight": "bold",
+        "size": "sm",
+        "wrap": true
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "降雨機率 30%",
+            "size": "xs",
+            "color": "#8c8c8c",
+            "flex": 0
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "wrap": true,
+                "color": "#8c8c8c",
+                "size": "xs",
+                "flex": 5,
+                "text": "氣溫 26°C~29°C"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "spacing": "sm",
+    "paddingAll": "13px"
+  }
+}

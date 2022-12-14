@@ -4,7 +4,7 @@ from models.message_request import MessageRequest
 from skills import add_skill
 
 
-@add_skill('/test')
+@add_skill('/onion')
 def get(message_request: MessageRequest):
     txt = '$ LINE emoji $'
     emoji = [

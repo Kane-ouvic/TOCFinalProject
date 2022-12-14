@@ -1,0 +1,62 @@
+{
+    "type": "bubble",
+    "size": "micro",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "Chill 咖啡館",
+          "weight": "bold",
+          "size": "sm",
+          "wrap": true
+        },
+        {
+          "type": "box",
+          "layout": "baseline",
+          "contents": [
+  
+          ]
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "baseline",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "步行約 3 min",
+                  "wrap": true,
+                  "color": "#8c8c8c",
+                  "size": "xs",
+                  "flex": 5
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "spacing": "sm",
+      "paddingAll": "13px"
+    },
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "button",
+          "action": {
+            "type": "uri",
+            "label": "開始導航",
+            "uri": "http://linecorp.com/"
+          },
+          "height": "sm"
+        }
+      ]
+    }
+  }

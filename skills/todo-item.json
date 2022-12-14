@@ -1,0 +1,132 @@
+{
+  "type": "bubble",
+  "size": "micro",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "進行中",
+        "color": "#ffffff",
+        "align": "start",
+        "size": "md",
+        "gravity": "center"
+      },
+      {
+        "type": "text",
+        "text": "80%",
+        "color": "#ffffff",
+        "align": "start",
+        "size": "xs",
+        "gravity": "center",
+        "margin": "lg"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "filler"
+              }
+            ],
+            "width": "80%",
+            "backgroundColor": "#014955",
+            "height": "6px"
+          }
+        ],
+        "backgroundColor": "#9FD8E36E",
+        "height": "6px",
+        "margin": "sm"
+      }
+    ],
+    "backgroundColor": "#1687a7",
+    "paddingTop": "19px",
+    "paddingAll": "12px",
+    "paddingBottom": "16px"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "搶高鐵早鳥票",
+            "color": "#8C8C8C",
+            "size": "sm",
+            "wrap": true
+          }
+        ],
+        "flex": 1
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "未設定到期日期",
+            "color": "#8C8C8C",
+            "size": "sm",
+            "wrap": true
+          }
+        ],
+        "flex": 1
+      }
+    ],
+    "spacing": "md",
+    "paddingAll": "12px"
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "postback",
+          "label": "修改狀態",
+          "data": "{{data}}"
+        },
+        "height": "sm",
+        "margin": "xs"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "postback",
+          "label": "修改完成度",
+          "data": "{{data}}"
+        },
+        "height": "sm",
+        "margin": "xs"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "datetimepicker",
+          "label": "設定到期日期",
+          "data": "{{data}}",
+          "mode": "date"
+        },
+        "margin": "xs",
+        "height": "sm"
+      }
+    ],
+    "margin": "xs",
+    "spacing": "xs"
+  },
+  "styles": {
+    "footer": {
+      "separator": false
+    }
+  }
+}
