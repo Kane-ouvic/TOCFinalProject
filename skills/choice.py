@@ -6,26 +6,26 @@ from skills import add_skill
 import random
 
 
-@add_skill('/吃什麼')
+@add_skill('/買什麼')
 def get(message_request: MessageRequest):
 
     # /吃什麼 烤雞.炸雞.鹹酥雞
 
     # 處理字串
-    foods_str = message_request.message.replace("/吃什麼 ", "")
-    foods = foods_str.split('.')
-    print(foods)
+    choices_str = message_request.message.replace("/買什麼 ", "")
+    choices = choices_str.split(',')
+    print(choices)
 
     # 隨機挑選一個項目
-    result = random.choice(foods)
+    result = random.choice(choices)
     print(result)
 
     # 處理回傳訊息
     message = TemplateSendMessage(
-        alt_text='今天吃什麼',
+        alt_text='買什麼會贏',
         template=ButtonsTemplate(
-            title='今天吃什麼?',
-            text=f'就決定吃 {result} 吧!',
+            title='買什麼會贏?',
+            text=f'就決定買 {result} 來贏錢吧!',
             actions=[
                 MessageAction(
                     label='我不要，換一個',

@@ -72,7 +72,7 @@ def handle_message(event):
     print(profile.status_message)
 
     # 回傳歡迎訊息
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(f'Hi, 蔥'))
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(f'Hi, 你好，很高興成為你的生活小幫手'))
 
 
 # @handler.add(event=MessageEvent, message=LocationMessage)
