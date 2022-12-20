@@ -6,10 +6,8 @@ from skills import add_skill
 import random
 
 
-@add_skill('/買什麼')
+@add_skill('/choose')
 def get(message_request: MessageRequest):
-
-    # /吃什麼 烤雞.炸雞.鹹酥雞
 
     # 處理字串
     choices_str = message_request.message.replace("/買什麼 ", "")

@@ -6,7 +6,7 @@ from skills import add_skill
 import requests
 
 
-@add_skill('/天氣預報')
+@add_skill('/weather')
 def get(message_request: MessageRequest):
 
     # /天氣預報 臺北市

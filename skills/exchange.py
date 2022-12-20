@@ -6,7 +6,7 @@ import json
 import os
 
 
-@add_skill('/匯率')
+@add_skill('/exchange')
 def get(message_request: MessageRequest):
     # /匯率 美金 1000
     msg_array = message_request.message.split()

@@ -226,7 +226,9 @@ machine = GraphMachine(model=model, states=['init', 'echo', 'choice', 'exchange'
                            {'trigger': 'reply', 'source': 'outer-website', 'dest': 'init',
                             'conditions': model.go_back},
                            {'trigger': 'send-message', 'source': 'invoice-compare', 'dest': 'invoice-compare',
-                            'conditions': model.enter_invoice_compare_state}
+                            'conditions': model.enter_invoice_compare_state},
+                           {'trigger': 'click-button', 'source': 'choice', 'dest': 'choice',
+                            'conditions': model.enter_choice_state}
 ],
     initial='init', show_conditions=True)
 
